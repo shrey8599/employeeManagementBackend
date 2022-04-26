@@ -28,7 +28,7 @@ exports.findAll = (req, res) =>{
         promise = Employee.findAll();
     }
 
-    promise.then(reponse =>{
+    promise.then(response =>{
         res.status(200).send(response);
     }).catch(err =>{
         res.status(500).send({
@@ -51,11 +51,11 @@ exports.update = (req, res) =>{
         where:{id:employeeId}
     }).then(response => {
         console.log(employee, employeeId);
-        res.status.send(200).send(response);
+        res.status(200).send(response);
     }).catch(err =>{
         res.status(500).send({
             message: "Error occured while updating the employee data!"
-        });
+        })
     });
 };
 
@@ -67,9 +67,9 @@ exports.delete = (req, res) =>{
             id: employeeId
         }
     }).then(response => {
-        res.status(200).send(response);
+        res.sendStatus(200).send(response);
     }).catch(err =>{
-        res.status(500).send({
+        res.sendStatus(500).send({
             message: "Error occured while deleting the employee"
         })
     });
